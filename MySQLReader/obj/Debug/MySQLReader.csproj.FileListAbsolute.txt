@@ -12,3 +12,17 @@ C:\Users\Giro\source\repos\MySQLReader\MySQLReader\bin\Debug\MySql.Data.dll
 C:\Users\Giro\source\repos\MySQLReader\MySQLReader\bin\Debug\Google.Protobuf.dll
 C:\Users\Giro\source\repos\MySQLReader\MySQLReader\bin\Debug\MySql.Data.xml
 C:\Users\Giro\source\repos\MySQLReader\MySQLReader\obj\Debug\MySQLReader.csproj.CopyComplete
+C:\Users\nikit\source\repos\MySQLReader\MySQLReader\bin\Debug\MySQLReader.exe.config
+C:\Users\nikit\source\repos\MySQLReader\MySQLReader\bin\Debug\MySQLReader.exe
+C:\Users\nikit\source\repos\MySQLReader\MySQLReader\bin\Debug\MySQLReader.pdb
+C:\Users\nikit\source\repos\MySQLReader\MySQLReader\bin\Debug\MySql.Data.dll
+C:\Users\nikit\source\repos\MySQLReader\MySQLReader\bin\Debug\Google.Protobuf.dll
+C:\Users\nikit\source\repos\MySQLReader\MySQLReader\bin\Debug\MySql.Data.xml
+C:\Users\nikit\source\repos\MySQLReader\MySQLReader\obj\Debug\MySQLReader.csprojAssemblyReference.cache
+C:\Users\nikit\source\repos\MySQLReader\MySQLReader\obj\Debug\MySQLReader.Form1.resources
+C:\Users\nikit\source\repos\MySQLReader\MySQLReader\obj\Debug\MySQLReader.Properties.Resources.resources
+C:\Users\nikit\source\repos\MySQLReader\MySQLReader\obj\Debug\MySQLReader.csproj.GenerateResource.cache
+C:\Users\nikit\source\repos\MySQLReader\MySQLReader\obj\Debug\MySQLReader.csproj.CoreCompileInputs.cache
+C:\Users\nikit\source\repos\MySQLReader\MySQLReader\obj\Debug\MySQLReader.csproj.CopyComplete
+C:\Users\nikit\source\repos\MySQLReader\MySQLReader\obj\Debug\MySQLReader.exe
+C:\Users\nikit\source\repos\MySQLReader\MySQLReader\obj\Debug\MySQLReader.pdb

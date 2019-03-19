@@ -31,14 +31,12 @@ namespace MySQLReader
 
         private void connectBTN_Click(object sender, EventArgs e)
         {
-            //MySqlConnectionStringBuilder cnsb = new MySqlConnectionStringBuilder();
             try
             {
                 treeView1.Nodes.Clear();
                 cn.ConnectionString = $"port={portTB.Text};server={hostnameTB.Text};userid={usernameTB.Text};password={passwordTB.Text}";
                 cn.Open();
                 DataTable dts = cn.GetSchema("Databases");
-                //dataGridView1.DataSource = dts;
                 
                 for(int i = 0; i < dts.Rows.Count; i++)
                 {
