@@ -121,7 +121,7 @@ namespace MySQLReader
                             adapdt.Fill(dt);
                             dataGridView1.DataSource = dt;
                             menuStrip1.Enabled = true;
-                            menuStrip1.Items[2].Text = e.Node.Text;
+                            menuStrip1.Items[2].Text = e.Node.Text + "    rows(" + dt.Rows.Count.ToString() + ")";
                         }
                         catch (Exception ex)
                         {
@@ -172,6 +172,7 @@ namespace MySQLReader
                 DataTable dt = new DataTable();
                 adapdt.Fill(dt);
                 dataGridView1.DataSource = dt;
+                menuStrip1.Items[2].Text = "result" + "    rows(" + dt.Rows.Count.ToString() + ")";
             }
             catch (Exception ex)
             {

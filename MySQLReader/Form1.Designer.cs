@@ -275,7 +275,7 @@
             this.splitContainer2.Panel2.Controls.Add(this.dataGridView1);
             this.splitContainer2.Panel2.Controls.Add(this.menuStrip1);
             this.splitContainer2.Size = new System.Drawing.Size(959, 627);
-            this.splitContainer2.SplitterDistance = 297;
+            this.splitContainer2.SplitterDistance = 291;
             this.splitContainer2.SplitterWidth = 10;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -286,7 +286,7 @@
             this.textBox1.Location = new System.Drawing.Point(0, 24);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(959, 273);
+            this.textBox1.Size = new System.Drawing.Size(959, 267);
             this.textBox1.TabIndex = 1;
             // 
             // menuStrip3
@@ -312,7 +312,7 @@
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 24);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(959, 296);
+            this.dataGridView1.Size = new System.Drawing.Size(959, 302);
             this.dataGridView1.TabIndex = 1;
             // 
             // menuStrip1
