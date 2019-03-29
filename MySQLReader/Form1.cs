@@ -18,6 +18,11 @@ namespace MySQLReader
         MySqlDataAdapter adapdt;
         MySqlCommandBuilder cmbuil;
 
+        MySqlDataAdapter left;
+        MySqlDataAdapter right;
+        MySqlCommandBuilder cmbul;
+        MySqlCommandBuilder cmbur;
+
         public Form1()
         {
             InitializeComponent();
@@ -53,12 +58,31 @@ namespace MySQLReader
             {
                 cn.Close();
             }
+            //#############################################################
+            try
+            {
+                cn.Open();
+                DataTable dts = cn.GetSchema("Databases");
+                for (int i = 0; i < dts.Rows.Count; i++)
+                {
+                    DB_CB.Items.Add(dts.Rows[i]["database_name"].ToString());
+                }
+                //bindingSource1.DataSource = new DataSet().Tables.
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "connecting to server");
+            }
+            finally
+            {
+                cn.Close();
+            }
         }
 
         private void treeView1_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             //double-click on database
-            if (treeView1.Nodes.Contains(e.Node))
+            if (/*treeView1.Nodes.Contains(e.Node)*/e.Node.Level == 0)
             {
                 try
                 {
@@ -70,7 +94,8 @@ namespace MySQLReader
                     {
                         string tablename = dts.Rows[i]["TABLE_NAME"].ToString();
                         TreeNode dbtree = new TreeNode(tablename);
-
+                        //e.Node.NodeFont = new Font("Microsoft Sans Serif", 8.25f, FontStyle.Bold);
+                        
                         dbtree.Nodes.AddRange(new[] { new TreeNode("Columns"), new TreeNode("Foreign Keys") });
 
                         DataTable schemadt = cn.GetSchema("Columns");
@@ -107,19 +132,19 @@ namespace MySQLReader
             }
             else // double-click on table
             {
-                for (int i = 0; i < treeView1.Nodes.Count; i++)
-                {
-                    if (treeView1.Nodes[i].Nodes.Contains(e.Node))
+                //for (int i = 0; i < treeView1.Nodes.Count; i++)
+                //{
+                    if (/*treeView1.Nodes[i].Nodes.Contains(e.Node)*/e.Node.Level == 1)
                     {
                         try
                         {
                             cn.Open();
                             cn.ChangeDatabase(e.Node.Parent.Text);
-                            adapdt = new MySqlDataAdapter($"SELECT * FROM `{e.Node.Text}`;", cn);
+                            adapdt = new MySqlDataAdapter($"SELECT * FROM `{e.Node.Parent.Text}`.`{e.Node.Text}`;", cn);
                             cmbuil = new MySqlCommandBuilder(adapdt);
                             DataTable dt = new DataTable();
                             adapdt.Fill(dt);
-                            dataGridView1.DataSource = dt;
+                            dataGrid.DataSource = dt;
                             menuStrip1.Enabled = true;
                             menuStrip1.Items[2].Text = e.Node.Text + "    rows(" + dt.Rows.Count.ToString() + ")";
                         }
@@ -131,9 +156,9 @@ namespace MySQLReader
                         {
                             cn.Close();
                         }
-                        break;
+                        //break;
                     }
-                }
+                //}
             }
         }
 
@@ -171,7 +196,7 @@ namespace MySQLReader
                 cmbuil = new MySqlCommandBuilder(adapdt);
                 DataTable dt = new DataTable();
                 adapdt.Fill(dt);
-                dataGridView1.DataSource = dt;
+                dataGrid.DataSource = dt;
                 menuStrip1.Items[2].Text = "result" + "    rows(" + dt.Rows.Count.ToString() + ")";
             }
             catch (Exception ex)
@@ -188,7 +213,7 @@ namespace MySQLReader
         {
             try
             {
-                adapdt.Update((DataTable)dataGridView1.DataSource);
+                adapdt.Update((DataTable)dataGrid.DataSource);
             }
             catch (Exception ex)
             {
@@ -202,12 +227,146 @@ namespace MySQLReader
             {
                 DataTable dt = new DataTable();
                 adapdt.Fill(dt);
-                dataGridView1.DataSource = dt;
+                dataGrid.DataSource = dt;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "reverting changes");
             }
+        }
+
+        private void DB_CB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                leftCB.Items.Clear();
+                rightCB.Items.Clear();
+                cn.Open();
+                cn.ChangeDatabase(DB_CB.Text);
+                DataTable dts = cn.GetSchema("Tables");
+                for (int i = 0; i < dts.Rows.Count; i++)
+                {
+                    leftCB.Items.Add(dts.Rows[i]["TABLE_NAME"].ToString());
+                    rightCB.Items.Add(dts.Rows[i]["TABLE_NAME"].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "connecting to database");
+            }
+            finally
+            {
+                cn.Close();
+            }
+        }
+
+        private void leftCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                cn.Open();
+                left = new MySqlDataAdapter($"select * from `{leftCB.Text}`", cn);
+                cmbul = new MySqlCommandBuilder(left);
+                DataTable dt = new DataTable();
+                left.Fill(dt);
+                dataGridView1.DataSource = dt;
+
+                SelRowCB.Items.Clear();
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    SelRowCB.Items.Add(dt.Rows[i][0].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "connecting to left table");
+            }
+            finally
+            {
+                cn.Close();
+            }
+        }
+
+        private void rightCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                cn.Open();
+                right = new MySqlDataAdapter($"select * from `{rightCB.Text}`", cn);
+                cmbur = new MySqlCommandBuilder(right);
+                DataTable dt = new DataTable();
+                right.Fill(dt);
+                dataGridView2.DataSource = dt;
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "connecting to left table");
+            }
+            finally
+            {
+                cn.Close();
+            }
+        }
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            //if (right != null)
+            //{
+            //    DataTable dt = new DataTable();
+            //    right.Fill(dt);
+            //    dataGridView2.DataSource = dt;
+            //}
+        }
+
+        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            //e.RowIndex
+            try
+            {
+                cn.Open();
+                string colstr = dataGridView1.Columns[e.ColumnIndex].HeaderText;
+                string rowstr = ((DataTable)dataGridView1.DataSource).Rows[e.RowIndex][colstr].ToString();
+                
+                //right = new MySqlDataAdapter($"select * from `{rightCB.Text}` where ", cn);
+                //cmbur = new MySqlCommandBuilder(right);
+                right = new MySqlDataAdapter($"select * from `{rightCB.Text}` where `{rightCB.Text}`.`{colstr}` = \'{rowstr}\'", cn);
+                cmbur = new MySqlCommandBuilder(right);
+                DataTable dt = new DataTable();
+                right.Fill(dt);
+                dataGridView2.DataSource = dt;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "connecting to left table");
+            }
+            finally
+            {
+                cn.Close();
+            }
+        }
+
+        private void SelRowCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //try
+            //{
+            //    cn.Open();
+            //    right = new MySqlDataAdapter($"select * from `{rightCB.Text}` where ", cn);
+            //    cmbur = new MySqlCommandBuilder(right);
+            //    DataTable dt = new DataTable();
+            //    right.Fill(dt);
+            //    dataGridView2.DataSource = dt;
+
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message, "connecting to left table");
+            //}
+            //finally
+            //{
+            //    cn.Close();
+            //}
         }
     }
 }
