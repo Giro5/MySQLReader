@@ -55,13 +55,14 @@
             this.revertToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.SelRowCB = new System.Windows.Forms.ComboBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.rightCB = new System.Windows.Forms.ComboBox();
             this.leftCB = new System.Windows.Forms.ComboBox();
             this.menuStrip4 = new System.Windows.Forms.MenuStrip();
             this.DB_CB = new System.Windows.Forms.ToolStripComboBox();
-            this.SelRowCB = new System.Windows.Forms.ComboBox();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.mainTabC.SuspendLayout();
             this.connectionTP.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -288,7 +289,7 @@
             this.splitContainer2.Panel2.Controls.Add(this.dataGrid);
             this.splitContainer2.Panel2.Controls.Add(this.menuStrip1);
             this.splitContainer2.Size = new System.Drawing.Size(959, 627);
-            this.splitContainer2.SplitterDistance = 279;
+            this.splitContainer2.SplitterDistance = 273;
             this.splitContainer2.SplitterWidth = 10;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -299,7 +300,7 @@
             this.textBox1.Location = new System.Drawing.Point(0, 24);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(959, 255);
+            this.textBox1.Size = new System.Drawing.Size(959, 249);
             this.textBox1.TabIndex = 1;
             // 
             // menuStrip3
@@ -325,7 +326,7 @@
             this.dataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGrid.Location = new System.Drawing.Point(0, 24);
             this.dataGrid.Name = "dataGrid";
-            this.dataGrid.Size = new System.Drawing.Size(959, 314);
+            this.dataGrid.Size = new System.Drawing.Size(959, 320);
             this.dataGrid.TabIndex = 1;
             // 
             // menuStrip1
@@ -377,50 +378,63 @@
             this.tabPage1.Text = "Coupling";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // SelRowCB
+            // 
+            this.SelRowCB.FormattingEnabled = true;
+            this.SelRowCB.Location = new System.Drawing.Point(3, 31);
+            this.SelRowCB.Name = "SelRowCB";
+            this.SelRowCB.Size = new System.Drawing.Size(390, 21);
+            this.SelRowCB.TabIndex = 5;
+            this.SelRowCB.SelectedIndexChanged += new System.EventHandler(this.SelRowCB_SelectedIndexChanged);
+            // 
             // dataGridView2
             // 
-            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(558, 58);
+            this.dataGridView2.Location = new System.Drawing.Point(4, 58);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(615, 574);
+            this.dataGridView2.Size = new System.Drawing.Size(1169, 574);
             this.dataGridView2.TabIndex = 4;
             // 
             // dataGridView1
             // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(4, 58);
+            this.dataGridView1.Location = new System.Drawing.Point(755, 28);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(548, 574);
+            this.dataGridView1.Size = new System.Drawing.Size(166, 24);
             this.dataGridView1.TabIndex = 3;
+            this.dataGridView1.Visible = false;
             this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick);
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
             // rightCB
             // 
             this.rightCB.FormattingEnabled = true;
-            this.rightCB.Location = new System.Drawing.Point(558, 31);
+            this.rightCB.Location = new System.Drawing.Point(608, 28);
             this.rightCB.Name = "rightCB";
             this.rightCB.Size = new System.Drawing.Size(121, 21);
             this.rightCB.TabIndex = 2;
+            this.rightCB.Visible = false;
             this.rightCB.SelectedIndexChanged += new System.EventHandler(this.rightCB_SelectedIndexChanged);
             // 
             // leftCB
             // 
             this.leftCB.FormattingEnabled = true;
-            this.leftCB.Location = new System.Drawing.Point(4, 31);
+            this.leftCB.Location = new System.Drawing.Point(481, 28);
             this.leftCB.Name = "leftCB";
             this.leftCB.Size = new System.Drawing.Size(121, 21);
             this.leftCB.TabIndex = 1;
+            this.leftCB.Visible = false;
             this.leftCB.SelectedIndexChanged += new System.EventHandler(this.leftCB_SelectedIndexChanged);
             // 
             // menuStrip4
             // 
+            this.menuStrip4.Enabled = false;
             this.menuStrip4.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.DB_CB});
+            this.DB_CB,
+            this.toolStripMenuItem2});
             this.menuStrip4.Location = new System.Drawing.Point(0, 0);
             this.menuStrip4.Name = "menuStrip4";
             this.menuStrip4.Size = new System.Drawing.Size(1176, 27);
@@ -433,14 +447,11 @@
             this.DB_CB.Size = new System.Drawing.Size(121, 23);
             this.DB_CB.SelectedIndexChanged += new System.EventHandler(this.DB_CB_SelectedIndexChanged);
             // 
-            // SelRowCB
+            // toolStripMenuItem2
             // 
-            this.SelRowCB.FormattingEnabled = true;
-            this.SelRowCB.Location = new System.Drawing.Point(279, 31);
-            this.SelRowCB.Name = "SelRowCB";
-            this.SelRowCB.Size = new System.Drawing.Size(121, 21);
-            this.SelRowCB.TabIndex = 5;
-            this.SelRowCB.SelectedIndexChanged += new System.EventHandler(this.SelRowCB_SelectedIndexChanged);
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(22, 23);
+            this.toolStripMenuItem2.Text = " ";
             // 
             // Form1
             // 
@@ -522,6 +533,7 @@
         private System.Windows.Forms.MenuStrip menuStrip4;
         private System.Windows.Forms.ToolStripComboBox DB_CB;
         private System.Windows.Forms.ComboBox SelRowCB;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
     }
 }
 
