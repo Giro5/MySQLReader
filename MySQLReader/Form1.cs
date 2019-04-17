@@ -62,12 +62,6 @@ namespace MySQLReader
             try
             {
                 cn.Open();
-                //DataTable dts = cn.GetSchema("Databases");
-                //for (int i = 0; i < dts.Rows.Count; i++)
-                //{
-                //    DB_CB.Items.Add(dts.Rows[i]["database_name"].ToString());
-                //}
-
                 left = new MySqlDataAdapter("select `Name_author` from `authors`", cn);
                 DataTable dt = new DataTable();
                 left.Fill(dt);
@@ -322,60 +316,17 @@ namespace MySQLReader
 
         private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            //e.RowIndex
 
-            //try
-            //{
-            //    cn.Open();
-            //    string colstr = dataGridView1.Columns[e.ColumnIndex].HeaderText;
-            //    string rowstr = ((DataTable)dataGridView1.DataSource).Rows[e.RowIndex][colstr].ToString();
-
-            //    //right = new MySqlDataAdapter($"select * from `{rightCB.Text}` where ", cn);
-            //    //cmbur = new MySqlCommandBuilder(right);
-            //    right = new MySqlDataAdapter($"select * from `{rightCB.Text}` where `{rightCB.Text}`.`{colstr}` = \'{rowstr}\'", cn);
-            //    cmbur = new MySqlCommandBuilder(right);
-            //    DataTable dt = new DataTable();
-            //    right.Fill(dt);
-            //    dataGridView2.DataSource = dt;
-
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message, "connecting to left table");
-            //}
-            //finally
-            //{
-            //    cn.Close();
-            //}
         }
 
         private void SelRowCB_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    cn.Open();
-            //    right = new MySqlDataAdapter($"select * from `{rightCB.Text}` where ", cn);
-            //    cmbur = new MySqlCommandBuilder(right);
-            //    DataTable dt = new DataTable();
-            //    right.Fill(dt);
-            //    dataGridView2.DataSource = dt;
-
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message, "connecting to left table");
-            //}
-            //finally
-            //{
-            //    cn.Close();
-            //}
-
             try
             {
                 cn.Open();
                 cn.ChangeDatabase("db_books");
-                right = new MySqlDataAdapter($"select `books`.* from `books`, `authors` " +
-                    $"where `books`.`Code_author` = `authors`.`Code_author` and `authors`.`Name_author` = \'{SelRowCB.Text}\';", cn);
+                right = new MySqlDataAdapter($"select books.* from books, authors " +
+                    $"where books.Code_author = authors.Code_author and authors.Name_author = \'{SelRowCB.Text}\';", cn);
                 cmbur = new MySqlCommandBuilder(right);
                 DataTable dtr = new DataTable();
                 right.Fill(dtr);
@@ -389,6 +340,30 @@ namespace MySQLReader
             {
                 cn.Close();
             }
+        }
+
+        private void dataGridView2_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                var row = ((DataTable)dataGridView2.DataSource).Rows[e.RowIndex];
+                codebookTB.Text = row.ItemArray[0].ToString();
+                codepublishTB.Text = row.ItemArray[4].ToString();
+                pagesTB.Text = row.ItemArray[3].ToString();
+                titlebookTB.Text = row.ItemArray[1].ToString();
+            }
+            catch
+            {
+                codebookTB.Text = "";
+                codepublishTB.Text = "";
+                pagesTB.Text = "";
+                titlebookTB.Text = "";
+            }
+        }
+
+        private void insertBtn_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

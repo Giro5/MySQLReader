@@ -55,6 +55,14 @@
             this.revertToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.codepublishTB = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.pagesTB = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.titlebookTB = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.codebookTB = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.SelRowCB = new System.Windows.Forms.ComboBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -63,6 +71,9 @@
             this.menuStrip4 = new System.Windows.Forms.MenuStrip();
             this.DB_CB = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.insertBtn = new System.Windows.Forms.Button();
+            this.updateBtn = new System.Windows.Forms.Button();
+            this.deleteBtn = new System.Windows.Forms.Button();
             this.mainTabC.SuspendLayout();
             this.connectionTP.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -289,7 +300,7 @@
             this.splitContainer2.Panel2.Controls.Add(this.dataGrid);
             this.splitContainer2.Panel2.Controls.Add(this.menuStrip1);
             this.splitContainer2.Size = new System.Drawing.Size(959, 627);
-            this.splitContainer2.SplitterDistance = 273;
+            this.splitContainer2.SplitterDistance = 261;
             this.splitContainer2.SplitterWidth = 10;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -300,7 +311,7 @@
             this.textBox1.Location = new System.Drawing.Point(0, 24);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(959, 249);
+            this.textBox1.Size = new System.Drawing.Size(959, 237);
             this.textBox1.TabIndex = 1;
             // 
             // menuStrip3
@@ -326,7 +337,7 @@
             this.dataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGrid.Location = new System.Drawing.Point(0, 24);
             this.dataGrid.Name = "dataGrid";
-            this.dataGrid.Size = new System.Drawing.Size(959, 320);
+            this.dataGrid.Size = new System.Drawing.Size(959, 332);
             this.dataGrid.TabIndex = 1;
             // 
             // menuStrip1
@@ -365,6 +376,17 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.deleteBtn);
+            this.tabPage1.Controls.Add(this.updateBtn);
+            this.tabPage1.Controls.Add(this.insertBtn);
+            this.tabPage1.Controls.Add(this.codepublishTB);
+            this.tabPage1.Controls.Add(this.label8);
+            this.tabPage1.Controls.Add(this.pagesTB);
+            this.tabPage1.Controls.Add(this.label7);
+            this.tabPage1.Controls.Add(this.titlebookTB);
+            this.tabPage1.Controls.Add(this.label6);
+            this.tabPage1.Controls.Add(this.codebookTB);
+            this.tabPage1.Controls.Add(this.label5);
             this.tabPage1.Controls.Add(this.SelRowCB);
             this.tabPage1.Controls.Add(this.dataGridView2);
             this.tabPage1.Controls.Add(this.dataGridView1);
@@ -377,6 +399,78 @@
             this.tabPage1.TabIndex = 2;
             this.tabPage1.Text = "Coupling";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // codepublishTB
+            // 
+            this.codepublishTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.codepublishTB.Location = new System.Drawing.Point(849, 235);
+            this.codepublishTB.Name = "codepublishTB";
+            this.codepublishTB.Size = new System.Drawing.Size(319, 20);
+            this.codepublishTB.TabIndex = 13;
+            // 
+            // label8
+            // 
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(846, 219);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(71, 13);
+            this.label8.TabIndex = 12;
+            this.label8.Text = "Code_publish";
+            // 
+            // pagesTB
+            // 
+            this.pagesTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pagesTB.Location = new System.Drawing.Point(849, 180);
+            this.pagesTB.Name = "pagesTB";
+            this.pagesTB.Size = new System.Drawing.Size(319, 20);
+            this.pagesTB.TabIndex = 11;
+            // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(846, 164);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(37, 13);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "Pages";
+            // 
+            // titlebookTB
+            // 
+            this.titlebookTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.titlebookTB.Location = new System.Drawing.Point(848, 126);
+            this.titlebookTB.Name = "titlebookTB";
+            this.titlebookTB.Size = new System.Drawing.Size(319, 20);
+            this.titlebookTB.TabIndex = 9;
+            // 
+            // label6
+            // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(845, 110);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(57, 13);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "Title_book";
+            // 
+            // codebookTB
+            // 
+            this.codebookTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.codebookTB.Location = new System.Drawing.Point(849, 75);
+            this.codebookTB.Name = "codebookTB";
+            this.codebookTB.Size = new System.Drawing.Size(319, 20);
+            this.codebookTB.TabIndex = 7;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(846, 59);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(62, 13);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "Code_book";
             // 
             // SelRowCB
             // 
@@ -395,8 +489,10 @@
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Location = new System.Drawing.Point(4, 58);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(1169, 574);
+            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView2.Size = new System.Drawing.Size(835, 574);
             this.dataGridView2.TabIndex = 4;
+            this.dataGridView2.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_RowEnter);
             // 
             // dataGridView1
             // 
@@ -452,6 +548,37 @@
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(22, 23);
             this.toolStripMenuItem2.Text = " ";
+            // 
+            // insertBtn
+            // 
+            this.insertBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.insertBtn.Location = new System.Drawing.Point(849, 285);
+            this.insertBtn.Name = "insertBtn";
+            this.insertBtn.Size = new System.Drawing.Size(75, 23);
+            this.insertBtn.TabIndex = 14;
+            this.insertBtn.Text = "Insert";
+            this.insertBtn.UseVisualStyleBackColor = true;
+            this.insertBtn.Click += new System.EventHandler(this.insertBtn_Click);
+            // 
+            // updateBtn
+            // 
+            this.updateBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.updateBtn.Location = new System.Drawing.Point(969, 285);
+            this.updateBtn.Name = "updateBtn";
+            this.updateBtn.Size = new System.Drawing.Size(75, 23);
+            this.updateBtn.TabIndex = 15;
+            this.updateBtn.Text = "Update";
+            this.updateBtn.UseVisualStyleBackColor = true;
+            // 
+            // deleteBtn
+            // 
+            this.deleteBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.deleteBtn.Location = new System.Drawing.Point(1093, 285);
+            this.deleteBtn.Name = "deleteBtn";
+            this.deleteBtn.Size = new System.Drawing.Size(75, 23);
+            this.deleteBtn.TabIndex = 16;
+            this.deleteBtn.Text = "Delete";
+            this.deleteBtn.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -534,6 +661,17 @@
         private System.Windows.Forms.ToolStripComboBox DB_CB;
         private System.Windows.Forms.ComboBox SelRowCB;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.TextBox codepublishTB;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox pagesTB;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox titlebookTB;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox codebookTB;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button deleteBtn;
+        private System.Windows.Forms.Button updateBtn;
+        private System.Windows.Forms.Button insertBtn;
     }
 }
 
