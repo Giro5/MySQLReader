@@ -23,6 +23,8 @@ namespace MySQLReader
         MySqlCommandBuilder cmbul;
         MySqlCommandBuilder cmbur;
 
+        string idbook = null;
+
         public Form1()
         {
             InitializeComponent();
@@ -327,6 +329,7 @@ namespace MySQLReader
                 cn.ChangeDatabase("db_books");
                 right = new MySqlDataAdapter($"select books.* from books, authors " +
                     $"where books.Code_author = authors.Code_author and authors.Name_author = \'{SelRowCB.Text}\';", cn);
+
                 cmbur = new MySqlCommandBuilder(right);
                 DataTable dtr = new DataTable();
                 right.Fill(dtr);
@@ -351,19 +354,87 @@ namespace MySQLReader
                 codepublishTB.Text = row.ItemArray[4].ToString();
                 pagesTB.Text = row.ItemArray[3].ToString();
                 titlebookTB.Text = row.ItemArray[1].ToString();
+                nameauthorTB.Text = SelRowCB.Text;
+                idbook = codebookTB.Text;
             }
             catch
             {
-                codebookTB.Text = "";
+                codebookTB.Text = null;
                 codepublishTB.Text = "";
                 pagesTB.Text = "";
                 titlebookTB.Text = "";
+                nameauthorTB.Text = SelRowCB.Text;
+                idbook = null;
             }
         }
 
         private void insertBtn_Click(object sender, EventArgs e)
         {
-            
+            string innerquery = $"select db_books.authors.Code_author from db_books.authors where db_books.authors.Name_author = \'{nameauthorTB.Text}\'";
+            MySqlCommand fullquery = new MySqlCommand($"INSERT db_books.books values ({codebookTB.Text}, \'{titlebookTB.Text}\', ({innerquery}), " +
+                $"{pagesTB.Text}, {codepublishTB.Text});", cn);
+            try
+            {
+                cn.Open();
+                fullquery.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "insert the book");
+            }
+            finally
+            {
+                cn.Close();
+            }
+            DataTable dtr = new DataTable();
+            right.Fill(dtr);
+            dataGridView2.DataSource = dtr;
+        }
+
+        private void updateBtn_Click(object sender, EventArgs e)
+        {
+            string innerquery = $"select db_books.authors.Code_author from db_books.authors where db_books.authors.Name_author = \'{nameauthorTB.Text}\'";
+            MySqlCommand fullquery = new MySqlCommand($"UPDATE db_books.books SET db_books.books.Code_book = {codebookTB.Text}, " +
+                $"db_books.books.Title_book = \'{titlebookTB.Text}\', db_books.books.Code_author = ({innerquery}), db_books.books.Pages = {pagesTB.Text}, " +
+                $"db_books.books.Code_publish = {codepublishTB.Text} where db_books.books.Code_book = {idbook};", cn);
+            try
+            {
+                cn.Open();
+                fullquery.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "update the book");
+            }
+            finally
+            {
+                cn.Close();
+            }
+            DataTable dtr = new DataTable();
+            right.Fill(dtr);
+            dataGridView2.DataSource = dtr;
+        }
+
+        private void deleteBtn_Click(object sender, EventArgs e)
+        {
+            string innerquery = $"select db_books.authors.Code_author from db_books.authors where db_books.authors.Name_author = \'{nameauthorTB.Text}\'";
+            MySqlCommand fullquery = new MySqlCommand($"DELETE FROM db_books.books WHERE db_books.books.Code_book = {idbook};", cn);
+            try
+            {
+                cn.Open();
+                fullquery.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "delete the book");
+            }
+            finally
+            {
+                cn.Close();
+            }
+            DataTable dtr = new DataTable();
+            right.Fill(dtr);
+            dataGridView2.DataSource = dtr;
         }
     }
 }

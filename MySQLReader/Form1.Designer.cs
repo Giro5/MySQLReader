@@ -55,6 +55,11 @@
             this.revertToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.nameauthorTB = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.deleteBtn = new System.Windows.Forms.Button();
+            this.updateBtn = new System.Windows.Forms.Button();
+            this.insertBtn = new System.Windows.Forms.Button();
             this.codepublishTB = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.pagesTB = new System.Windows.Forms.TextBox();
@@ -71,9 +76,6 @@
             this.menuStrip4 = new System.Windows.Forms.MenuStrip();
             this.DB_CB = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.insertBtn = new System.Windows.Forms.Button();
-            this.updateBtn = new System.Windows.Forms.Button();
-            this.deleteBtn = new System.Windows.Forms.Button();
             this.mainTabC.SuspendLayout();
             this.connectionTP.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -300,7 +302,7 @@
             this.splitContainer2.Panel2.Controls.Add(this.dataGrid);
             this.splitContainer2.Panel2.Controls.Add(this.menuStrip1);
             this.splitContainer2.Size = new System.Drawing.Size(959, 627);
-            this.splitContainer2.SplitterDistance = 261;
+            this.splitContainer2.SplitterDistance = 249;
             this.splitContainer2.SplitterWidth = 10;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -311,7 +313,7 @@
             this.textBox1.Location = new System.Drawing.Point(0, 24);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(959, 237);
+            this.textBox1.Size = new System.Drawing.Size(959, 225);
             this.textBox1.TabIndex = 1;
             // 
             // menuStrip3
@@ -337,7 +339,7 @@
             this.dataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGrid.Location = new System.Drawing.Point(0, 24);
             this.dataGrid.Name = "dataGrid";
-            this.dataGrid.Size = new System.Drawing.Size(959, 332);
+            this.dataGrid.Size = new System.Drawing.Size(959, 344);
             this.dataGrid.TabIndex = 1;
             // 
             // menuStrip1
@@ -376,6 +378,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.nameauthorTB);
+            this.tabPage1.Controls.Add(this.label9);
             this.tabPage1.Controls.Add(this.deleteBtn);
             this.tabPage1.Controls.Add(this.updateBtn);
             this.tabPage1.Controls.Add(this.insertBtn);
@@ -399,6 +403,57 @@
             this.tabPage1.TabIndex = 2;
             this.tabPage1.Text = "Coupling";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // nameauthorTB
+            // 
+            this.nameauthorTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.nameauthorTB.Location = new System.Drawing.Point(848, 294);
+            this.nameauthorTB.Name = "nameauthorTB";
+            this.nameauthorTB.Size = new System.Drawing.Size(319, 20);
+            this.nameauthorTB.TabIndex = 18;
+            // 
+            // label9
+            // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(845, 278);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(71, 13);
+            this.label9.TabIndex = 17;
+            this.label9.Text = "Name_author";
+            // 
+            // deleteBtn
+            // 
+            this.deleteBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.deleteBtn.Location = new System.Drawing.Point(1092, 335);
+            this.deleteBtn.Name = "deleteBtn";
+            this.deleteBtn.Size = new System.Drawing.Size(75, 23);
+            this.deleteBtn.TabIndex = 16;
+            this.deleteBtn.Text = "Delete";
+            this.deleteBtn.UseVisualStyleBackColor = true;
+            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
+            // 
+            // updateBtn
+            // 
+            this.updateBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.updateBtn.Location = new System.Drawing.Point(968, 335);
+            this.updateBtn.Name = "updateBtn";
+            this.updateBtn.Size = new System.Drawing.Size(75, 23);
+            this.updateBtn.TabIndex = 15;
+            this.updateBtn.Text = "Update";
+            this.updateBtn.UseVisualStyleBackColor = true;
+            this.updateBtn.Click += new System.EventHandler(this.updateBtn_Click);
+            // 
+            // insertBtn
+            // 
+            this.insertBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.insertBtn.Location = new System.Drawing.Point(848, 335);
+            this.insertBtn.Name = "insertBtn";
+            this.insertBtn.Size = new System.Drawing.Size(75, 23);
+            this.insertBtn.TabIndex = 14;
+            this.insertBtn.Text = "Insert";
+            this.insertBtn.UseVisualStyleBackColor = true;
+            this.insertBtn.Click += new System.EventHandler(this.insertBtn_Click);
             // 
             // codepublishTB
             // 
@@ -549,37 +604,6 @@
             this.toolStripMenuItem2.Size = new System.Drawing.Size(22, 23);
             this.toolStripMenuItem2.Text = " ";
             // 
-            // insertBtn
-            // 
-            this.insertBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.insertBtn.Location = new System.Drawing.Point(849, 285);
-            this.insertBtn.Name = "insertBtn";
-            this.insertBtn.Size = new System.Drawing.Size(75, 23);
-            this.insertBtn.TabIndex = 14;
-            this.insertBtn.Text = "Insert";
-            this.insertBtn.UseVisualStyleBackColor = true;
-            this.insertBtn.Click += new System.EventHandler(this.insertBtn_Click);
-            // 
-            // updateBtn
-            // 
-            this.updateBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.updateBtn.Location = new System.Drawing.Point(969, 285);
-            this.updateBtn.Name = "updateBtn";
-            this.updateBtn.Size = new System.Drawing.Size(75, 23);
-            this.updateBtn.TabIndex = 15;
-            this.updateBtn.Text = "Update";
-            this.updateBtn.UseVisualStyleBackColor = true;
-            // 
-            // deleteBtn
-            // 
-            this.deleteBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.deleteBtn.Location = new System.Drawing.Point(1093, 285);
-            this.deleteBtn.Name = "deleteBtn";
-            this.deleteBtn.Size = new System.Drawing.Size(75, 23);
-            this.deleteBtn.TabIndex = 16;
-            this.deleteBtn.Text = "Delete";
-            this.deleteBtn.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -672,6 +696,8 @@
         private System.Windows.Forms.Button deleteBtn;
         private System.Windows.Forms.Button updateBtn;
         private System.Windows.Forms.Button insertBtn;
+        private System.Windows.Forms.TextBox nameauthorTB;
+        private System.Windows.Forms.Label label9;
     }
 }
 
