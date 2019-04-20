@@ -64,17 +64,29 @@ namespace MySQLReader
             try
             {
                 cn.Open();
+
                 left = new MySqlDataAdapter("select `Name_author` from `authors`", cn);
                 DataTable dt = new DataTable();
                 left.Fill(dt);
                 SelRowCB.Items.Clear();
                 for (int i = 0; i < dt.Rows.Count; i++)
                     SelRowCB.Items.Add(dt.Rows[i][0]);
-                right = new MySqlDataAdapter("select * from `books`", cn);
-                cmbur = new MySqlCommandBuilder(right);
-                DataTable dtr = new DataTable();
-                right.Fill(dtr);
-                dataGridView2.DataSource = dtr;
+                //right = new MySqlDataAdapter("select * from `books`", cn);
+                //cmbur = new MySqlCommandBuilder(right);
+
+                //DataTable dtr = new DataTable();
+                //right.Fill(dtr);
+                //for (int i = 0; i < dtr.Columns.Count; i++)
+                //{
+                //    dtr.Columns[i].ColumnName = dtr.Columns[i].ColumnName.Replace("Code", "Код");
+                //    dtr.Columns[i].ColumnName = dtr.Columns[i].ColumnName.Replace("_", " ");
+                //    dtr.Columns[i].ColumnName = dtr.Columns[i].ColumnName.Replace("book", "книги");
+                //    dtr.Columns[i].ColumnName = dtr.Columns[i].ColumnName.Replace("Title", "Название");
+                //    dtr.Columns[i].ColumnName = dtr.Columns[i].ColumnName.Replace("Pages", "Страницы");
+                //    dtr.Columns[i].ColumnName = dtr.Columns[i].ColumnName.Replace("publish", "издательства");
+                //    dtr.Columns[i].ColumnName = dtr.Columns[i].ColumnName.Replace("author", "автора");
+                //}
+                //dataGridView2.DataSource = dtr;
             }
             catch (Exception ex)
             {
@@ -311,16 +323,6 @@ namespace MySQLReader
             }
         }
 
-        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-
-        }
-
         private void SelRowCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -333,6 +335,16 @@ namespace MySQLReader
                 cmbur = new MySqlCommandBuilder(right);
                 DataTable dtr = new DataTable();
                 right.Fill(dtr);
+                for (int i = 0; i < dtr.Columns.Count; i++)
+                {
+                    dtr.Columns[i].ColumnName = dtr.Columns[i].ColumnName.Replace("Code", "Код");
+                    dtr.Columns[i].ColumnName = dtr.Columns[i].ColumnName.Replace("_", " ");
+                    dtr.Columns[i].ColumnName = dtr.Columns[i].ColumnName.Replace("book", "книги");
+                    dtr.Columns[i].ColumnName = dtr.Columns[i].ColumnName.Replace("Title", "Название");
+                    dtr.Columns[i].ColumnName = dtr.Columns[i].ColumnName.Replace("Pages", "Страницы");
+                    dtr.Columns[i].ColumnName = dtr.Columns[i].ColumnName.Replace("publish", "издательства");
+                    dtr.Columns[i].ColumnName = dtr.Columns[i].ColumnName.Replace("author", "автора");
+                }
                 dataGridView2.DataSource = dtr;
             }
             catch (Exception ex)
@@ -359,7 +371,7 @@ namespace MySQLReader
             }
             catch
             {
-                codebookTB.Text = null;
+                codebookTB.Text = "";
                 codepublishTB.Text = "";
                 pagesTB.Text = "";
                 titlebookTB.Text = "";
@@ -371,7 +383,7 @@ namespace MySQLReader
         private void insertBtn_Click(object sender, EventArgs e)
         {
             string innerquery = $"select db_books.authors.Code_author from db_books.authors where db_books.authors.Name_author = \'{nameauthorTB.Text}\'";
-            MySqlCommand fullquery = new MySqlCommand($"INSERT db_books.books values ({codebookTB.Text}, \'{titlebookTB.Text}\', ({innerquery}), " +
+            MySqlCommand fullquery = new MySqlCommand($"INSERT db_books.books values ({(codebookTB.Text == "" ? "null" : codebookTB.Text)}, \'{titlebookTB.Text}\', ({innerquery}), " +
                 $"{pagesTB.Text}, {codepublishTB.Text});", cn);
             try
             {
@@ -388,6 +400,16 @@ namespace MySQLReader
             }
             DataTable dtr = new DataTable();
             right.Fill(dtr);
+            for (int i = 0; i < dtr.Columns.Count; i++)
+            {
+                dtr.Columns[i].ColumnName = dtr.Columns[i].ColumnName.Replace("Code", "Код");
+                dtr.Columns[i].ColumnName = dtr.Columns[i].ColumnName.Replace("_", " ");
+                dtr.Columns[i].ColumnName = dtr.Columns[i].ColumnName.Replace("book", "книги");
+                dtr.Columns[i].ColumnName = dtr.Columns[i].ColumnName.Replace("Title", "Название");
+                dtr.Columns[i].ColumnName = dtr.Columns[i].ColumnName.Replace("Pages", "Страницы");
+                dtr.Columns[i].ColumnName = dtr.Columns[i].ColumnName.Replace("publish", "издательства");
+                dtr.Columns[i].ColumnName = dtr.Columns[i].ColumnName.Replace("author", "автора");
+            }
             dataGridView2.DataSource = dtr;
         }
 
@@ -412,6 +434,16 @@ namespace MySQLReader
             }
             DataTable dtr = new DataTable();
             right.Fill(dtr);
+            for (int i = 0; i < dtr.Columns.Count; i++)
+            {
+                dtr.Columns[i].ColumnName = dtr.Columns[i].ColumnName.Replace("Code", "Код");
+                dtr.Columns[i].ColumnName = dtr.Columns[i].ColumnName.Replace("_", " ");
+                dtr.Columns[i].ColumnName = dtr.Columns[i].ColumnName.Replace("book", "книги");
+                dtr.Columns[i].ColumnName = dtr.Columns[i].ColumnName.Replace("Title", "Название");
+                dtr.Columns[i].ColumnName = dtr.Columns[i].ColumnName.Replace("Pages", "Страницы");
+                dtr.Columns[i].ColumnName = dtr.Columns[i].ColumnName.Replace("publish", "издательства");
+                dtr.Columns[i].ColumnName = dtr.Columns[i].ColumnName.Replace("author", "автора");
+            }
             dataGridView2.DataSource = dtr;
         }
 
@@ -434,6 +466,16 @@ namespace MySQLReader
             }
             DataTable dtr = new DataTable();
             right.Fill(dtr);
+            for (int i = 0; i < dtr.Columns.Count; i++)
+            {
+                dtr.Columns[i].ColumnName = dtr.Columns[i].ColumnName.Replace("Code", "Код");
+                dtr.Columns[i].ColumnName = dtr.Columns[i].ColumnName.Replace("_", " ");
+                dtr.Columns[i].ColumnName = dtr.Columns[i].ColumnName.Replace("book", "книги");
+                dtr.Columns[i].ColumnName = dtr.Columns[i].ColumnName.Replace("Title", "Название");
+                dtr.Columns[i].ColumnName = dtr.Columns[i].ColumnName.Replace("Pages", "Страницы");
+                dtr.Columns[i].ColumnName = dtr.Columns[i].ColumnName.Replace("publish", "издательства");
+                dtr.Columns[i].ColumnName = dtr.Columns[i].ColumnName.Replace("author", "автора");
+            }
             dataGridView2.DataSource = dtr;
         }
     }

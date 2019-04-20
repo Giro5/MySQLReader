@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.mainTabC = new System.Windows.Forms.TabControl();
             this.connectionTP = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -76,6 +77,7 @@
             this.menuStrip4 = new System.Windows.Forms.MenuStrip();
             this.DB_CB = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.mainTabC.SuspendLayout();
             this.connectionTP.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -96,6 +98,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // mainTabC
@@ -302,7 +305,7 @@
             this.splitContainer2.Panel2.Controls.Add(this.dataGrid);
             this.splitContainer2.Panel2.Controls.Add(this.menuStrip1);
             this.splitContainer2.Size = new System.Drawing.Size(959, 627);
-            this.splitContainer2.SplitterDistance = 249;
+            this.splitContainer2.SplitterDistance = 237;
             this.splitContainer2.SplitterWidth = 10;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -313,7 +316,7 @@
             this.textBox1.Location = new System.Drawing.Point(0, 24);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(959, 225);
+            this.textBox1.Size = new System.Drawing.Size(959, 213);
             this.textBox1.TabIndex = 1;
             // 
             // menuStrip3
@@ -339,7 +342,7 @@
             this.dataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGrid.Location = new System.Drawing.Point(0, 24);
             this.dataGrid.Name = "dataGrid";
-            this.dataGrid.Size = new System.Drawing.Size(959, 344);
+            this.dataGrid.Size = new System.Drawing.Size(959, 356);
             this.dataGrid.TabIndex = 1;
             // 
             // menuStrip1
@@ -418,9 +421,9 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(845, 278);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(71, 13);
+            this.label9.Size = new System.Drawing.Size(67, 13);
             this.label9.TabIndex = 17;
-            this.label9.Text = "Name_author";
+            this.label9.Text = "Имя автора";
             // 
             // deleteBtn
             // 
@@ -469,9 +472,9 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(846, 219);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(71, 13);
+            this.label8.Size = new System.Drawing.Size(99, 13);
             this.label8.TabIndex = 12;
-            this.label8.Text = "Code_publish";
+            this.label8.Text = "Код издательства";
             // 
             // pagesTB
             // 
@@ -487,9 +490,9 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(846, 164);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(37, 13);
+            this.label7.Size = new System.Drawing.Size(57, 13);
             this.label7.TabIndex = 10;
-            this.label7.Text = "Pages";
+            this.label7.Text = "Страницы";
             // 
             // titlebookTB
             // 
@@ -505,9 +508,9 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(845, 110);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(57, 13);
+            this.label6.Size = new System.Drawing.Size(89, 13);
             this.label6.TabIndex = 8;
-            this.label6.Text = "Title_book";
+            this.label6.Text = "Название книги";
             // 
             // codebookTB
             // 
@@ -523,9 +526,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(846, 59);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(62, 13);
+            this.label5.Size = new System.Drawing.Size(58, 13);
             this.label5.TabIndex = 6;
-            this.label5.Text = "Code_book";
+            this.label5.Text = "Код книги";
             // 
             // SelRowCB
             // 
@@ -543,6 +546,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Location = new System.Drawing.Point(4, 58);
+            this.dataGridView2.MultiSelect = false;
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView2.Size = new System.Drawing.Size(835, 574);
@@ -557,8 +561,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(166, 24);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.Visible = false;
-            this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick);
-            this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
             // rightCB
             // 
@@ -644,6 +646,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.menuStrip4.ResumeLayout(false);
             this.menuStrip4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -698,6 +701,7 @@
         private System.Windows.Forms.Button insertBtn;
         private System.Windows.Forms.TextBox nameauthorTB;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.BindingSource bindingSource1;
     }
 }
 
