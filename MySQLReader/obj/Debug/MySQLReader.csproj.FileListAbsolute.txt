@@ -26,3 +26,5 @@ C:\Users\nikit\source\repos\MySQLReader\MySQLReader\obj\Debug\MySQLReader.csproj
 C:\Users\nikit\source\repos\MySQLReader\MySQLReader\obj\Debug\MySQLReader.csproj.CopyComplete
 C:\Users\nikit\source\repos\MySQLReader\MySQLReader\obj\Debug\MySQLReader.exe
 C:\Users\nikit\source\repos\MySQLReader\MySQLReader\obj\Debug\MySQLReader.pdb
+C:\Users\nikit\source\repos\MySQLReader\MySQLReader\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\nikit\source\repos\MySQLReader\MySQLReader\bin\Debug\Renci.SshNet.dll

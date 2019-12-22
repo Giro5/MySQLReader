@@ -41,7 +41,7 @@ namespace MySQLReader
             try
             {
                 treeView1.Nodes.Clear();
-                cn.ConnectionString = $"port={portTB.Text};server={hostnameTB.Text};userid={usernameTB.Text};password={passwordTB.Text};database=db_books";
+                cn.ConnectionString = $"port={portTB.Text};server={hostnameTB.Text};userid={usernameTB.Text};password={passwordTB.Text}";
                 cn.Open();
                 DataTable dts = cn.GetSchema("Databases");
 
@@ -64,7 +64,7 @@ namespace MySQLReader
             try
             {
                 cn.Open();
-
+                cn.ChangeDatabase("db_books");
                 left = new MySqlDataAdapter("select `Name_author` from `authors`", cn);
                 DataTable dt = new DataTable();
                 left.Fill(dt);
